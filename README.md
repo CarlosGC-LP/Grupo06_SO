@@ -1,16 +1,18 @@
 # codigon para iniciar el proyecto
 
 - **Paso 1**: python -m venv entorno_django
-- **Paso 2**: pip install djangorestframework
-- **Paso 3**: crear la carpeta vacia migrations y __pycache__  dentro de backend_so
-- **Paso 4**: python manage.py makemigrations
-- **Paso 5**: python manage.py migrate
-- **Paso 6**: python manage.py makemigrations backend_so
-- **Paso 7**: python manage.py migrate backend_so 
-- **Paso 8**: python manage.py createsuperuser
-- **Paso 9**: python manage.py runserver
+- **Paso 2**: entorno_django\Scripts\activate
+- **Paso 3**: pip install djangorestframework
+- **Paso 4**: pip install mysqclient
+- **Paso 5**: crear la carpeta vacia "migrations" y "__pycache__"  dentro de backend_so
+- **Paso 6**: python manage.py makemigrations
+- **Paso 7**: python manage.py migrate
+- **Paso 8**: python manage.py makemigrations backend_so
+- **Paso 9**: python manage.py migrate backend_so 
+- **Paso 10**: python manage.py createsuperuser
+- **Paso 11**: python manage.py runserver
 
-# codigo para deploy cel proyecto
+# codigo para deploy del proyecto
 - python manage.py collectstatic
 
 # codigo para correr el proyecto en local
