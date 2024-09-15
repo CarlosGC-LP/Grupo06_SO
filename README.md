@@ -19,4 +19,10 @@
  **Paso 3**: ruta del panel administrativo  http://127.0.0.1:8000/admin/ y los endpoints son http://127.0.0.1:8000/api/productos,etc segun el modelo
 
 
+ # codigo para traer los cambios del repo
+- **Paso 1**:  git add .
+- **Paso 2**: git commit -m "nombre de tu cambio que hiciste"
+ **Paso 3**: git pull origin main 
+
+
 
