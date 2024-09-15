@@ -26,7 +26,7 @@
 - **Paso 1**:  git add .
 - **Paso 2**: git commit -m "nombre de tu cambio que hiciste"
  **Paso 3**: git pull origin main 
-
+hola
 
 
 
