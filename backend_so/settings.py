@@ -11,10 +11,11 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import pymysql  # Añadido
+pymysql.install_as_MySQLdb()  # Añadido
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -27,7 +28,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',  
+    'rest_framework',
     'backend_so',
 ]
 
@@ -74,13 +74,13 @@ WSGI_APPLICATION = 'backend_so.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 DATABASES = {
-   'default': {
+    'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'bd_so',  # Nombre de la base de datos
-        'USER': 'grupo06so',  # Usuario de la base de datos
-        'PASSWORD': 'N5M8k*Vsl9@4',  # Contraseña del usuario
+        'USER': 'root',  # Usuario de la base de datos
+        'PASSWORD': 'root',  # Contraseña del usuario
         'HOST': 'localhost',  # O la IP del contenedor si está en otro servidor o red
-        'PORT': '3311',  # Puerto que mapeaste en Docker
+        'PORT': '3306',  # Puerto que mapeaste en Docker
     }
 }
 
@@ -102,7 +102,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
@@ -113,7 +112,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
