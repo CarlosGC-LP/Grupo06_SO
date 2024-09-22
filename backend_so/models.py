@@ -5,7 +5,7 @@ class Producto(models.Model):
     descripcion = models.TextField(blank=True, null=True)
     precio = models.DecimalField(max_digits=10, decimal_places=2)
     cantidad_en_stock = models.IntegerField()
-
+    urlImgProducto = models.URLField(max_length=200, blank=True, null=True)
     def __str__(self):
         return self.nombre
 
