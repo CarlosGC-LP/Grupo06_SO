@@ -28,30 +28,36 @@ class UserSerializer(serializers.ModelSerializer):
         user.save()
         return user
 
+# serializers.py
+
 class RegisterSerializer(serializers.ModelSerializer):
-    password = serializers.CharField(write_only=True)
-    telefono = serializers.CharField(required=False)  # Si deseas permitir un número de teléfono opcional
-    direccion = serializers.CharField(required=False)  # Si deseas permitir una dirección opcional
+    password = serializers.CharField(write_only=True)  # Solo escritura para mayor seguridad
+    first_name = serializers.CharField(required=True)  # Añadir first_name
+    last_name = serializers.CharField(required=True)   # Añadir last_name
+    telefono = serializers.CharField(required=False)   # Opcional
+    direccion = serializers.CharField(required=False)  # Opcional
 
     class Meta:
         model = User
-        fields = ['email', 'password', 'telefono', 'direccion']  # Agregar los campos opcionales aquí
+        fields = ['email', 'password', 'first_name', 'last_name', 'telefono', 'direccion']
 
     def create(self, validated_data):
-        # Extraer el teléfono y la dirección si están presentes
+        # Extraer los campos que no están directamente en el modelo User
         telefono = validated_data.pop('telefono', None)
         direccion = validated_data.pop('direccion', None)
 
-        # Crear el usuario
+        # Crear el usuario y asignar todos los campos, incluidos first_name y last_name
         user = User(
             email=validated_data['email'],
-            username=validated_data['email'],  # Usa el email como username
+            username=validated_data['email'],  # Usar el email como username
+            first_name=validated_data['first_name'],  # Asignar first_name
+            last_name=validated_data['last_name'],    # Asignar last_name
         )
-        user.set_password(validated_data['password'])
-        user.save()
+        user.set_password(validated_data['password'])  # Encriptar la contraseña
+        user.save()  # Guardar el usuario en la base de datos
 
-        # Crear el cliente asociado al usuario
-        cliente = Cliente.objects.create(
+        # Crear el cliente asociado al usuario (si tienes un modelo Cliente relacionado)
+        Cliente.objects.create(
             user=user,
             telefono=telefono,
             direccion=direccion,
@@ -59,7 +65,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 
         return user
 
-        
+      
 class ClienteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cliente
