@@ -27,7 +27,6 @@ SECRET_KEY = 'django-insecure-tgrnmfaa%!za!4%pgdwbf=*0)!2t(ep2s6pgbm21739td0jur2
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-CORS_ALLOWED_ORIGINS =['*']
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
+    'rest_framework.authtoken',
     'backend_so',
 ]
 
@@ -52,6 +52,16 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+}
+
 CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = 'backend_so.urls'
@@ -79,11 +89,11 @@ WSGI_APPLICATION = 'backend_so.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ecommerce',  # Nombre de la base de datos
+        'NAME': 'bd_so',  # Nombre de la base de datos
         'USER': 'grupo06so',  # Usuario de la base de datos
         'PASSWORD': 'N5M8k*Vsl9@4',  # Contraseña del usuario
         'HOST': 'localhost',  # O la IP del contenedor si está en otro servidor o red
-        'PORT': '3306',  # Puerto que mapeaste en Docker
+        'PORT': '3311',  # Puerto que mapeaste en Docker
     }
 }
 
