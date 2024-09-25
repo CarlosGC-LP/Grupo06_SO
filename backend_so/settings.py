@@ -89,11 +89,11 @@ WSGI_APPLICATION = 'backend_so.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'bd_so',  # Nombre de la base de datos
+        'NAME': 'ecommerce',  # Nombre de la base de datos
         'USER': 'grupo06so',  # Usuario de la base de datos
         'PASSWORD': 'N5M8k*Vsl9@4',  # Contraseña del usuario
         'HOST': 'localhost',  # O la IP del contenedor si está en otro servidor o red
-        'PORT': '3311',  # Puerto que mapeaste en Docker
+        'PORT': '3306',  # Puerto que mapeaste en Docker
     }
 }
 
