@@ -4,6 +4,8 @@ from rest_framework.response import Response
 from rest_framework import status, viewsets, generics,permissions
 from rest_framework.authtoken.models import Token 
 from rest_framework.permissions import AllowAny
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import TokenAuthentication
 from rest_framework import status
 from django.db import IntegrityError
 from rest_framework import serializers 
@@ -77,8 +79,8 @@ class ClienteViewSet(viewsets.ModelViewSet):
 class VentaViewSet(viewsets.ModelViewSet):
     queryset = Venta.objects.all()
     serializer_class = VentaSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
+    authentication_classes = [TokenAuthentication]  # Requerir token
+    permission_classes = [IsAuthenticated]  # Requerir que el usuario esté autenticado
     def perform_create(self, serializer):
         serializer.save()  # Solo guarda el serializer; el cliente se maneja dentro del serializer
 
